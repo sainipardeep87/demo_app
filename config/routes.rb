@@ -1,7 +1,11 @@
 DemoApp::Application.routes.draw do
+  root :to => 'static_pages#home'
+  
+  
+  
   get "users/new"
 
-  root to: 'static_pages#home'
+  
   match '/signup',  to: 'users#new'
   # match '/',        to: 'static_pages#home'
   match '/help',    to: 'static_pages#help'
