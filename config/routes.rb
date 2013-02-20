@@ -12,7 +12,8 @@ DemoApp::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contect', to: 'static_pages#contect'
   
-
+  resources :static_pages
+  
   resources :microposts
 
 

@@ -1,4 +1,10 @@
 DemoApp::Application.configure do
+   # Speed up tests by lowering BCrypt's cost function.
+  require 'bcrypt'
+  silence_warnings do
+    BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
+  end
+  
   # Settings specified here will take precedence over those in config/application.rb
 
   # The test environment is used exclusively to run your application's
@@ -34,4 +40,5 @@ DemoApp::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
 end
