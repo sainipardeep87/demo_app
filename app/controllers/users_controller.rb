@@ -48,6 +48,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  def change_password
+    
+  end
+  
   private
  
   

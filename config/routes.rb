@@ -8,7 +8,12 @@ DemoApp::Application.routes.draw do
   
   resources :static_pages
   resources :microposts
-  resources :users
+  
+  resources :users do 
+    collection do
+      get :change_password
+    end
+  end
   
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
