@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def show
     @users=User.find(params[:id])
     @microposts = @users.microposts.paginate(page: params[:page])
+    
   end
   
   def create
