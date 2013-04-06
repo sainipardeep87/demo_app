@@ -14,6 +14,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'faker'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.6'
+gem 'paperclip'
 
 group :development ,:test do
   gem 'rspec-rails', '2.11.0'

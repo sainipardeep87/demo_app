@@ -1,0 +1,38 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <%if @user.attachment.file?%>	
+      <%= image_tag @user.attachment.url, :height => 100, :width => 100 %>
+      <%else%>
+      <%= image_tag 'no_image.png', :height => 100, :width => 150%>
+      <%end%>
+      <h1><%= @user.name %></h1>
+      <span><%= link_to "view my profile", @user %></span>
+      <span><b>Microposts:</b> <%= @user.microposts.count %></span>
+    </section>
+    <section>
+      <%= render 'shared/states' %>
+      <% if @users.any? %>
+        <div class="user_avatars">
+          <% @users.each do |user| %>
+          <%if user.attachment.file?%>
+            <%= link_to (image_tag user.attachment.url,:height => 30, :width => 40) , user %>
+            <%else%>
+            <%= link_to (image_tag 'no_image.png', :height => 30, :width => 40), user %>
+            <%end%>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+  </aside>
+  <div class="span8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="users">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate %>
+    <% end %>
+  </div>
+</div>

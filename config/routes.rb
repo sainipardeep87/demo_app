@@ -11,12 +11,16 @@ DemoApp::Application.routes.draw do
   
   resources :users do 
     collection do
-      get :change_password
+      get :find_user
+    end
+    member do
+      get :following, :followers
     end
   end
   
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'

@@ -1,0 +1,10 @@
+<% unless @users.blank? %>
+	<ul class="mini-blocks-list">
+			<% @users.each_with_index do |user,index| %>
+		<li class="searched_user_name" id="<%=user.id%>">		
+			<%=link_to user.name, {:controller=>"/users", :action=>"show", :id=>user.id}%>
+			
+		</li>
+		<%end%>
+	</ul>
+<%end%> 

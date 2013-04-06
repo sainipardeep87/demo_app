@@ -12,8 +12,9 @@ class UsersController < ApplicationController
   end
   
   def show
-    @users=User.find(params[:id])
-    @microposts = @users.microposts.paginate(page: params[:page])
+    puts "params in show action is #{params}"
+    @user=User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
     
   end
   
@@ -48,8 +49,25 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
-  def change_password
-    
+  def find_user
+    puts "params in the find user is #{params}"
+    input=params[:input]
+    @users = User.find(:all,:conditions =>["users.name LIKE ? OR users.email LIKE ? ", "%#{input}%","%#{input}%"])
+    render :partial => "searched_users"
+  end
+  
+   def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
   
   private
