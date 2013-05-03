@@ -15,6 +15,7 @@ gem 'faker'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'paperclip'
+gem 'omniauth-facebook'
 
 group :development ,:test do
   gem 'rspec-rails', '2.11.0'
